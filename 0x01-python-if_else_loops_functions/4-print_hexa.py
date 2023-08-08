@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-result = ""
-for i in range(98):
-    result += f"{i} = {hex(i)}\n"
+the_result = ""
+for i in range(99):
+    the_result += str(i) + " = " + hex(i) + "\n"
 
-print(result, end='')
+print(the_result, end="")
