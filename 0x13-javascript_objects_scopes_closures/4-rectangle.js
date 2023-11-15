@@ -1,29 +1,29 @@
 #!/usr/bin/node
-
 class Rectangle {
-  constructor(w, h) {
-    if (w > 0 && h > 0) {
+  constructor (w, h) {
+    if ((w > 0) && (h > 0)) {
       this.width = w;
       this.height = h;
-    } else {
-      // If w or h is is -ve, create an empty object
-      Object.create(null);
     }
   }
 
-  print() {
+  print () {
     for (let i = 0; i < this.height; i++) {
-      console.log('X'.repeat(this.width));
+      let s = '';
+      for (let j = 0; j < this.width; j++) {
+        s += 'X';
+      }
+      console.log(s);
     }
   }
 
-  rotate() {
-    // Exchange the width and height of the rectangle
-    [this.width, this.height] = [this.height, this.width];
+  rotate () {
+    const i = this.width;
+    this.width = this.height;
+    this.height = i;
   }
 
-  double() {
-    // Double the width and height of the rectangle
+  double () {
     this.width *= 2;
     this.height *= 2;
   }

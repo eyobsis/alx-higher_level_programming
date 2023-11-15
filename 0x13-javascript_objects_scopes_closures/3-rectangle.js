@@ -1,19 +1,19 @@
 #!/usr/bin/node
-
 class Rectangle {
-  constructor(w, h) {
-    if (w > 0 && h > 0) {
+  constructor (w, h) {
+    if ((w > 0) && (h > 0)) {
       this.width = w;
       this.height = h;
-    } else {
-      // If w or h is not a positive integer, create an empty object
-      Object.create(null);
     }
   }
 
-  print() {
+  print () {
     for (let i = 0; i < this.height; i++) {
-      console.log('X'.repeat(this.width));
+      let seeme = '';
+      for (let j = 0; j < this.width; j++) {
+        seeme += 'X';
+      }
+      console.log(seeme);
     }
   }
 }
