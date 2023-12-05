@@ -1,18 +1,25 @@
 #!/usr/bin/python3
 """
-Displays the GitHub user id using the GitHub API with Basic Authentication.
+list 10 commits (from the most recent to oldest) of the repository “rails”
+by the user “rails”
 """
 import requests
-import sys
+from sys import argv
+
 
 if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    api_url = "https://api.github.com/user"
-
-    response = requests.get(api_url, auth=(username, password))
-    if response.status_code == 200:
-        user_id = response.json().get('id')
-        print(user_id)
-    else:
-        print(None)
+    """
+    list 10 commits (from the most recent to oldest) of the repository
+    “rails” by the user “rails”
+    """
+    repo = argv[1]
+    owner = argv[2]
+    url = 'https://api.github.com/repos/{}/{}/commits'.format(owner, repo)
+    r = requests.get(url)
+    res_list = r.json()
+    try:
+        for i in range(10):
+            print("{}: {}".format(res_list[i].get('sha'), res_list[i].
+                                  get('commit').get('author').get('name')))
+    except:
+        pass
