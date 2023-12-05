@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 """
-Fetches a URL, retrieves the value of the X-Request-Id variable 
-from the response header, and displays it.
+takes in a URL, sends a request to the URL and displays the
+value of the X-Request-Id variable found in the header of the
+response
 """
 import urllib.request
-import sys
+from sys import argv
+
 
 if __name__ == "__main__":
-    """
-    Fetches a URL, retrieves the value of the X-Request-Id variable 
-    from the response header, and displays it.
-    """
-    with urllib.request.urlopen(sys.argv[1]) as response:
-        x_request_id = response.info().get('X-Request-Id')
-        print(x_request_id)
+    """takes in a URL, sends a request to the URL and displays
+    the value of the X-Request-Id variable found in the header
+    of the response"""
+    with urllib.request.urlopen(argv[1]) as response:
+        html_id = response.info().get('X-Request-Id')
+        print(html_id)
